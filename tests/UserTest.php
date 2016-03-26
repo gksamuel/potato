@@ -1,37 +1,58 @@
 <?php
 
-require_once("models/User.php");
-require_once("configs/database.php");
 /**
- * These are the test units for the User model
- * 
- *
+ * These are the test cases for the User class
+ * Functions specific to the User class tests come here
+ */
+/**
  * @author samuel gachanja <gksamuel1@gmail.com>
  * @version 1.0 March 2016
- * @category test
+ * @category model
+ */
+require_once("models/User.php");
+require_once("configs/database.php");
+
+/**
+ * Stores properties of the UserTest class
+ * @class UserTest
  */
 class UserTest extends PHPUnit_Framework_TestCase {
 
+    /**
+     * setUp method - loads User class in preparation for tests
+     */
     protected function setUp() {
         $user = new User();
     }
 
+    /**
+     * tearDown method - Clears variables at the end of the tests.
+     */
     protected function tearDown() {
         $user = NULL;
     }
 
+    /**
+     * testFind method - tests if potatoORM is able to find record
+     */
     public function testFind() {
         $user = new User;
         $user->find(4);
         $this->assertEquals(4, $user->userID);
     }
 
+    /**
+     * testgetAll method - tests fetching all records from the database
+     */
     public function testgetAll() {
         $user = new User;
         $user->getAll();
         $this->assertNotEmpty($user);
     }
 
+    /**
+     * testSave method - tests creation and updating of records
+     */
     public function testSave() {
         $user = new User;
         $user->find(4);
@@ -46,6 +67,9 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($lastName, $user->lastName);
     }
 
+    /**
+     * testInsert method - tests creation of record
+     */
     public function testInsert() {
         $user = new User;
         $lastName = rand(100, 200);
@@ -57,6 +81,9 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertGreaterThan(0, $user->userID);
     }
 
+    /**
+     * testDestroy method - deletes a record from a table
+     */
     public function testDestroy() {
         $user = new User;
         $firstname = rand(1000, 2000);
