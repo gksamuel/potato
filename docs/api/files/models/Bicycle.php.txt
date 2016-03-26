@@ -1,0 +1,39 @@
+<?php
+/**
+ * This is a stub model class for Bicycle
+ * Functions specific to the Bicycle class come here
+ */
+/**
+ * @author samuel gachanja <gksamuel1@gmail.com>
+ * @version 1.0 March 2016
+ * @category model
+ */
+require_once 'library/PotatoORM.php';
+
+/**
+ * Stores properties of the Car class
+ * Functions specific to Class Bicycle come in this file.
+ * @class Car
+ */
+class Bicycle extends PotatoORM {
+
+    /**
+     *
+     * @var type cycleID is the primary key for the Bicycle class
+     */
+    public $cycleID;
+
+    /**
+     *
+     * @var type model the model for the Bicycle class
+     */
+    public $model;
+
+    /**
+     *
+     * @var type numberOfGears stores the number of gears for the Bicycle class
+     */
+    public $numberOfGears;
+
+}
+
